@@ -1,14 +1,24 @@
 package org.example.mobile;
 
+import org.example.mobile.Contact;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MobilePhone {
     private String myNumber;
     private ArrayList<Contact> myContacts;
 
+    // Tek argümanlı constructor
     public MobilePhone(String myNumber) {
         this.myNumber = myNumber;
         this.myContacts = new ArrayList<>();
+    }
+
+    // İki argümanlı constructor (Yeni eklenen)
+    public MobilePhone(String myNumber, List<Contact> contacts) {
+        this.myNumber = myNumber;
+        this.myContacts = new ArrayList<>(contacts);  // List<Contact>'i ArrayList'e çeviriyoruz
     }
 
     public String getMyNumber() {
@@ -45,11 +55,11 @@ public class MobilePhone {
         return true;
     }
 
-    private int findContact(Contact contact) {
+    public int findContact(Contact contact) {
         return this.myContacts.indexOf(contact);
     }
 
-    private int findContact(String contactName) {
+    public int findContact(String contactName) {
         for (int i = 0; i < this.myContacts.size(); i++) {
             Contact contact = this.myContacts.get(i);
             if (contact.getName().equals(contactName)) {
